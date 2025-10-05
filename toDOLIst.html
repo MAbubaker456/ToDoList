@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="todolist.css">
+</head>
+<body>
+    <div id="container"> 
+        <h1>TODO list</h1>
+        <div>
+    <input id="taskInput" type="text" placeholder="enter element">
+    <button id="addBtn">Add</button>
+    </div>
+   <ul id="taskList"></ul>
+
+     <!-- This is a comment 
+<input id="quantityInput" type="number" min="1" placeholder="Enter quantity">
+      <select name="" id="units">
+        <option value="kg">kg</option>
+        <option value="ltrs">ltrs</option>
+        <option value="hr">hr</option>
+        <option value="none">none</option>
+    </select> -->
+    </div>
+    <script>
+        const input = document.getElementById("taskInput");
+        const addBtn= document.getElementById("addBtn");
+        const taskList = document.getElementById("taskList");
+        //const unitSelect = document.getElementById("units");
+
+        
+        addBtn.addEventListener("click",() => {
+            const taskText = input.value.trim();
+           // const quantity = quantityInput.value.trim();
+           // const unit = unitSelect.value;
+
+            if (taskText === "") return;
+            
+            const li = document.createElement("li");
+            li.innerText = taskText;
+            // delete button 
+            const delBtn = document.createElement("button");
+            delBtn.innerText = "delete";
+            delBtn.className = "delete-btn" ;
+            delBtn.addEventListener("click",(evt) => {
+                evt.stopPropagation();
+                taskList.removeChild(li);
+            });
+            li.appendChild(delBtn);
+            taskList.appendChild(li);
+            // const selectedUnit = document.getElementById("unitSelect").value;
+            // const unitbtn = document.createElement("button");
+            // li.appendChild(unitbtn);
+             input.value = "";
+
+        });
+       
+    </script>
+    
+</body>
+</html>
